@@ -7,16 +7,20 @@ public class PlayerMovement : MonoBehaviour
     [Header("Movement")]
     [SerializeField] private CharacterController controller;
     [SerializeField] private Animator animator;
+    [SerializeField] private PlayerCutting playerCutting;
     [SerializeField] private Transform body;
     [SerializeField] private float speed = 5f;
 
     private void Update()
     {
-        HandleMovement();
-        RotateCharacter();
+        if (!playerCutting.isCutting)
+        {
+            HandleMovement();
+            RotateCharacter();
+        }
     }
 
-    private void HandleMovement()
+    private void HandleMovement() //TODO
     {
         float dirX = Input.GetAxis("Horizontal");
         float dirY = Input.GetAxis("Vertical");
