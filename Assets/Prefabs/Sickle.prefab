@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4122536980077856725}
   - component: {fileID: 4122536980077856715}
-  - component: {fileID: 4122536980077856724}
   m_Layer: 0
   m_Name: Sickle_001_C06
   m_TagString: Untagged
@@ -40,20 +39,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4122536980077856726}
   m_Mesh: {fileID: -9018547004128276164, guid: aede26595ab727a4d8128f7ddfc53788, type: 3}
---- !u!64 &4122536980077856724
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4122536980077856726}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -9018547004128276164, guid: aede26595ab727a4d8128f7ddfc53788, type: 3}
 --- !u!1 &4122536980541368597
 GameObject:
   m_ObjectHideFlags: 0
@@ -65,8 +50,11 @@ GameObject:
   - component: {fileID: 4122536980541368586}
   - component: {fileID: 4122536980541368587}
   - component: {fileID: 4122536980541368596}
+  - component: {fileID: 303115527608518722}
+  - component: {fileID: 7503896317495725557}
+  - component: {fileID: 1295941693969340124}
   m_Layer: 0
-  m_Name: Sickle_001
+  m_Name: Sickle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -142,6 +130,49 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!54 &303115527608518722
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4122536980541368597}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!135 &7503896317495725557
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4122536980541368597}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.25
+  m_Center: {x: -0.2, y: 0, z: -0.1}
+--- !u!114 &1295941693969340124
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4122536980541368597}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6624af7eff59b5458aa90668535bf87, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetTag: Wheat
+  wheatBlock: {fileID: 4628334688705066981, guid: a1c3c04633ad7cd49add4fb24f5ed7c5, type: 3}
 --- !u!1 &4122536980830170121
 GameObject:
   m_ObjectHideFlags: 0
@@ -152,7 +183,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4122536980830170120}
   - component: {fileID: 4122536980830170126}
-  - component: {fileID: 4122536980830170127}
   m_Layer: 0
   m_Name: Sickle_001_C02
   m_TagString: Untagged
@@ -182,20 +212,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4122536980830170121}
   m_Mesh: {fileID: -4126896453356062911, guid: aede26595ab727a4d8128f7ddfc53788, type: 3}
---- !u!64 &4122536980830170127
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4122536980830170121}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -4126896453356062911, guid: aede26595ab727a4d8128f7ddfc53788, type: 3}
 --- !u!1 &4122536980869241710
 GameObject:
   m_ObjectHideFlags: 0
@@ -206,7 +222,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4122536980869241709}
   - component: {fileID: 4122536980869241699}
-  - component: {fileID: 4122536980869241708}
   m_Layer: 0
   m_Name: Sickle_001_C01
   m_TagString: Untagged
@@ -236,20 +251,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4122536980869241710}
   m_Mesh: {fileID: 6422026045531520983, guid: aede26595ab727a4d8128f7ddfc53788, type: 3}
---- !u!64 &4122536980869241708
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4122536980869241710}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 6422026045531520983, guid: aede26595ab727a4d8128f7ddfc53788, type: 3}
 --- !u!1 &4122536981128123939
 GameObject:
   m_ObjectHideFlags: 0
@@ -260,7 +261,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4122536981128123938}
   - component: {fileID: 4122536981128123936}
-  - component: {fileID: 4122536981128123937}
   m_Layer: 0
   m_Name: Sickle_001_C03
   m_TagString: Untagged
@@ -290,20 +290,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4122536981128123939}
   m_Mesh: {fileID: -2712580959627209377, guid: aede26595ab727a4d8128f7ddfc53788, type: 3}
---- !u!64 &4122536981128123937
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4122536981128123939}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -2712580959627209377, guid: aede26595ab727a4d8128f7ddfc53788, type: 3}
 --- !u!1 &4122536981239940340
 GameObject:
   m_ObjectHideFlags: 0
@@ -314,7 +300,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4122536981239940331}
   - component: {fileID: 4122536981239940329}
-  - component: {fileID: 4122536981239940330}
   m_Layer: 0
   m_Name: Sickle_001_C04
   m_TagString: Untagged
@@ -344,20 +329,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4122536981239940340}
   m_Mesh: {fileID: -2128373614076257578, guid: aede26595ab727a4d8128f7ddfc53788, type: 3}
---- !u!64 &4122536981239940330
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4122536981239940340}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -2128373614076257578, guid: aede26595ab727a4d8128f7ddfc53788, type: 3}
 --- !u!1 &4122536981616427063
 GameObject:
   m_ObjectHideFlags: 0
@@ -368,7 +339,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4122536981616427062}
   - component: {fileID: 4122536981616427060}
-  - component: {fileID: 4122536981616427061}
   m_Layer: 0
   m_Name: Sickle_001_C07
   m_TagString: Untagged
@@ -398,20 +368,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4122536981616427063}
   m_Mesh: {fileID: 7593192349477499240, guid: aede26595ab727a4d8128f7ddfc53788, type: 3}
---- !u!64 &4122536981616427061
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4122536981616427063}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 7593192349477499240, guid: aede26595ab727a4d8128f7ddfc53788, type: 3}
 --- !u!1 &4122536981955429724
 GameObject:
   m_ObjectHideFlags: 0
@@ -422,7 +378,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4122536981955429715}
   - component: {fileID: 4122536981955429713}
-  - component: {fileID: 4122536981955429714}
   m_Layer: 0
   m_Name: Sickle_001_C05
   m_TagString: Untagged
@@ -451,18 +406,4 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4122536981955429724}
-  m_Mesh: {fileID: 180052146656479875, guid: aede26595ab727a4d8128f7ddfc53788, type: 3}
---- !u!64 &4122536981955429714
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4122536981955429724}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
   m_Mesh: {fileID: 180052146656479875, guid: aede26595ab727a4d8128f7ddfc53788, type: 3}
