@@ -5,7 +5,7 @@ using UnityEngine;
 public class BlockIdle : MonoBehaviour
 {
     [HideInInspector] private bool shouldRotate = true;
-    [HideInInspector] private Vector3 targetLocalPosition;
+    [HideInInspector] private Vector3 targetPosition;
 
     [Header("Idle")]
     [SerializeField] private float rotationSpeed = 50f;
@@ -21,7 +21,7 @@ public class BlockIdle : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (transform.position != targetLocalPosition)
+        if (transform.position != targetPosition)
         {
             MoveToTargetPosition();
         }
@@ -35,12 +35,12 @@ public class BlockIdle : MonoBehaviour
     private void SetInitialPosition()
     {
         Vector3 randomOffset = new Vector3(Random.Range(-initialOffset, initialOffset), 0f, Random.Range(-initialOffset, initialOffset));
-        targetLocalPosition = transform.localPosition + randomOffset;
+        targetPosition = transform.position + randomOffset;
     }
 
     private void MoveToTargetPosition()
     {
-        transform.position = Vector3.Lerp(transform.position, targetLocalPosition, repositionSpeed * Time.deltaTime);
+        transform.position = Vector3.Lerp(transform.position, targetPosition, repositionSpeed * Time.deltaTime);
     }
 
     private void IdleRotate()
@@ -48,10 +48,9 @@ public class BlockIdle : MonoBehaviour
         transform.Rotate(0f, rotationSpeed * Time.deltaTime, 0f);
     }
 
-    public void SetLocalTargetPosition(Vector3 newPosition)
+    public void SetTargetPosition(Vector3 newPosition)
     {
-        targetLocalPosition = newPosition;
+        targetPosition = newPosition;
         shouldRotate = false;
-        transform.rotation = Quaternion.Euler(Vector3.zero);
     }
 }

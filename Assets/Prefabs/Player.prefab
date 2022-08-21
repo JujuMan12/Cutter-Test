@@ -940,6 +940,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blockTag: Block
+  deliveringZoneTag: DeliveringZone
   backpack: {fileID: 208605162}
   posYLowest: -0.15
   posYOffset: 0.025
