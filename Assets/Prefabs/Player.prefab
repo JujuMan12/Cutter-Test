@@ -940,10 +940,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blockTag: Block
-  deliveringZoneTag: DeliveringZone
   backpack: {fileID: 208605162}
   posYLowest: -0.15
   posYOffset: 0.025
+  deliveringZoneTag: DeliveringZone
+  deliveringTime: 1
 --- !u!1 &1789272960074739661
 GameObject:
   m_ObjectHideFlags: 0

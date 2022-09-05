@@ -2,10 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BlockIdle : MonoBehaviour
+public class BlockComponent : MonoBehaviour
 {
     [HideInInspector] private bool shouldRotate = true;
+    [HideInInspector] private bool shouldReposition = true;
     [HideInInspector] private Vector3 targetPosition;
+
+    [Header("Components")]
+    [SerializeField] private BoxCollider boxCollider;
 
     [Header("Idle")]
     [SerializeField] private float rotationSpeed = 50f;
@@ -21,7 +25,7 @@ public class BlockIdle : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (transform.position != targetPosition)
+        if (shouldReposition && transform.position != targetPosition)
         {
             MoveToTargetPosition();
         }
@@ -48,9 +52,31 @@ public class BlockIdle : MonoBehaviour
         transform.Rotate(0f, rotationSpeed * Time.deltaTime, 0f);
     }
 
-    public void SetTargetPosition(Vector3 newPosition)
+    private void SetTargetPosition(Vector3 newPosition)
     {
         targetPosition = newPosition;
+    }
+
+    public void Collect(Transform backpack, float posY)
+    {
+        transform.SetParent(backpack);
+        transform.localPosition = new Vector3(0f, posY, 0f);
+        transform.localRotation = Quaternion.Euler(Vector3.zero);
+        //SetLocalTargetPosition(new Vector3(0f, posY, 0f)); //TODO
+
+        shouldReposition = false;
         shouldRotate = false;
+        boxCollider.enabled = false;
+    }
+
+    public void Deliver(Transform deliveringZone, float deliveringTime)
+    {
+        transform.SetParent(deliveringZone);
+        transform.localRotation = Quaternion.Euler(Vector3.zero);
+
+        shouldReposition = true;
+        SetTargetPosition(deliveringZone.position);
+
+        Destroy(gameObject, deliveringTime);
     }
 }

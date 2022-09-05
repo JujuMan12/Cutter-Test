@@ -2,9 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerBlockCollecting : MonoBehaviour
+public class PlayerBlockManager : MonoBehaviour
 {
     [HideInInspector] private List<GameObject> collectedBlocks;
+    [HideInInspector] private float deliveringCooldown;
 
     [Header("Collecting")]
     [SerializeField] private string blockTag;
@@ -14,10 +15,19 @@ public class PlayerBlockCollecting : MonoBehaviour
 
     [Header("Delivering")]
     [SerializeField] private string deliveringZoneTag;
+    [SerializeField] private float deliveringTime = 1f;
 
     private void Start()
     {
         collectedBlocks = new List<GameObject>();
+    }
+
+    private void Update()
+    {
+        if (deliveringCooldown > 0f)
+        {
+            deliveringCooldown -= Time.deltaTime;
+        }
     }
 
     private void OnTriggerEnter(Collider collider)
@@ -29,21 +39,22 @@ public class PlayerBlockCollecting : MonoBehaviour
             int blockId = collectedBlocks.Count - 1;
             float posY = posYLowest + posYOffset * blockId;
 
-            collider.GetComponent<BlockIdle>().enabled = false;
-
-            collider.transform.SetParent(backpack);
-            collider.transform.localPosition = new Vector3(0f, posY, 0f);
-            collider.transform.localRotation = Quaternion.Euler(Vector3.zero);
-            //collider.GetComponent<BlockIdle>().SetLocalTargetPosition(new Vector3(0f, posY, 0f)); //TODO
+            BlockComponent blockComponent = collider.GetComponent<BlockComponent>();
+            blockComponent.Collect(backpack, posY);
         }
+    }
 
-        if (collider.CompareTag(deliveringZoneTag) && collectedBlocks.Count != 0)
+    private void OnTriggerStay(Collider collider)
+    {
+        if (collider.CompareTag(deliveringZoneTag) && collectedBlocks.Count != 0 && deliveringCooldown <= 0f)
         {
             GameObject lastBlock = collectedBlocks[collectedBlocks.Count - 1];
-            BlockIdle blockComponent = lastBlock.GetComponent<BlockIdle>();
+            BlockComponent blockComponent = lastBlock.GetComponent<BlockComponent>();
 
-            blockComponent.enabled = true;
-            //blockComponent.SetTargetPosition
+            blockComponent.Deliver(collider.transform, deliveringTime);
+            collectedBlocks.Remove(lastBlock);
+
+            deliveringCooldown = deliveringTime;
         }
     }
 }
