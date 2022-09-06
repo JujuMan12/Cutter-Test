@@ -6,7 +6,6 @@ public class CoinCounter : MonoBehaviour
 {
     [HideInInspector] private float currentAmount;
     [HideInInspector] private float targetAmount;
-    [HideInInspector] private GameObject coin;
 
     [Header("Counting")]
     [SerializeField] private float blockPrice = 15f;
@@ -16,7 +15,6 @@ public class CoinCounter : MonoBehaviour
     [SerializeField] private Transform canvas;
     [SerializeField] private TMPro.TextMeshProUGUI coinText;
     [SerializeField] private GameObject coinPrefab;
-    [SerializeField] private float moveSpeed = 500f;
 
     private void FixedUpdate()
     {
@@ -25,11 +23,6 @@ public class CoinCounter : MonoBehaviour
 
     private void Update()
     {
-        if (coin != null)
-        {
-            MoveCoin();
-        }
-
         if (currentAmount != targetAmount)
         {
             currentAmount = Mathf.Lerp(currentAmount, targetAmount, Time.deltaTime * countSpeed);
@@ -38,20 +31,16 @@ public class CoinCounter : MonoBehaviour
 
     public void CreateCoin(Vector3 position)
     {
-        coin = Instantiate(coinPrefab, position, Quaternion.identity, canvas);
+        GameObject coin = Instantiate(coinPrefab, position, Quaternion.identity, canvas);
+        CoinMovement coinMovement = coin.GetComponent<CoinMovement>();
+
+        coinMovement.targetPosition = coinText.rectTransform.position;
+        coinMovement.coinCounter = this;
     }
 
-    private void MoveCoin()
+    public void TakeCoin(GameObject coin)
     {
-        if (coin.transform.position != coinText.rectTransform.position)
-        {
-            coin.transform.position = Vector3.MoveTowards(coin.transform.position, coinText.rectTransform.position, Time.deltaTime * moveSpeed);
-        }
-        else
-        {
-            targetAmount += blockPrice;
-            Destroy(coin);
-            coin = null;
-        }
+        targetAmount += blockPrice;
+        Destroy(coin);
     }
 }

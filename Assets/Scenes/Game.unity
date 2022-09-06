@@ -330,7 +330,6 @@ MonoBehaviour:
   canvas: {fileID: 1682430897}
   coinText: {fileID: 347792391}
   coinPrefab: {fileID: 6618465659747483113, guid: ac0d9d0abe45b4b4698fbaff0d2e7f64, type: 3}
-  moveSpeed: 1000
 --- !u!114 &316888589
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -794,7 +793,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 60
+  field of view: 45
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -820,7 +819,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   m_LocalRotation: {x: 0.38268343, y: 0, z: 0, w: 0.92387956}
-  m_LocalPosition: {x: 0, y: 3, z: -3}
+  m_LocalPosition: {x: 0, y: 5, z: -5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
