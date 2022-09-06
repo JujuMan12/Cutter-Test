@@ -112,3 +112,4 @@ MonoBehaviour:
   rotationSpeed: 50
   initialOffset: 2
   repositionSpeed: 2.5
+  coinPrefab: {fileID: 6618465659747483113, guid: ac0d9d0abe45b4b4698fbaff0d2e7f64, type: 3}

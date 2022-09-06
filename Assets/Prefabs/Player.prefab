@@ -945,6 +945,7 @@ MonoBehaviour:
   posYOffset: 0.025
   deliveringZoneTag: DeliveringZone
   deliveringTime: 1
+  coinCounter: {fileID: 0}
 --- !u!1 &1789272960074739661
 GameObject:
   m_ObjectHideFlags: 0

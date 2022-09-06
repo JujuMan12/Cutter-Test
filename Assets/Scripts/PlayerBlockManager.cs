@@ -16,6 +16,7 @@ public class PlayerBlockManager : MonoBehaviour
     [Header("Delivering")]
     [SerializeField] private string deliveringZoneTag;
     [SerializeField] private float deliveringTime = 1f;
+    [SerializeField] private CoinCounter coinCounter;
 
     private void Start()
     {
@@ -53,6 +54,8 @@ public class PlayerBlockManager : MonoBehaviour
 
             blockComponent.Deliver(collider.transform, deliveringTime);
             collectedBlocks.Remove(lastBlock);
+
+            coinCounter.CreateCoin(Camera.main.WorldToScreenPoint(transform.position));
 
             deliveringCooldown = deliveringTime;
         }
