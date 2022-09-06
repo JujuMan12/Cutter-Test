@@ -939,12 +939,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71bddf9c7e3c7884d819ae9e30670219, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  collectedBlocks: []
   blockTag: Block
+  maxBlocks: 40
   backpack: {fileID: 208605162}
   posYLowest: -0.15
   posYOffset: 0.025
   deliveringZoneTag: DeliveringZone
-  deliveringTime: 1
+  deliveringTime: 0.5
   coinCounter: {fileID: 0}
 --- !u!1 &1789272960074739661
 GameObject:

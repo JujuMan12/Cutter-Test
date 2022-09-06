@@ -4,17 +4,18 @@ using UnityEngine;
 
 public class PlayerBlockManager : MonoBehaviour
 {
-    [HideInInspector] private List<GameObject> collectedBlocks;
+    [HideInInspector] public List<GameObject> collectedBlocks;
     [HideInInspector] private float deliveringCooldown;
 
     [Header("Collecting")]
-    [SerializeField] private string blockTag;
+    [SerializeField] private string blockTag = "Block";
+    [SerializeField] public int maxBlocks = 40;
     [SerializeField] private Transform backpack;
     [SerializeField] private float posYLowest;
     [SerializeField] private float posYOffset;
 
     [Header("Delivering")]
-    [SerializeField] private string deliveringZoneTag;
+    [SerializeField] private string deliveringZoneTag = "DeliveringZone";
     [SerializeField] private float deliveringTime = 1f;
     [SerializeField] private CoinCounter coinCounter;
 
@@ -33,7 +34,7 @@ public class PlayerBlockManager : MonoBehaviour
 
     private void OnTriggerEnter(Collider collider)
     {
-        if (collider.CompareTag(blockTag))
+        if (collider.CompareTag(blockTag) && collectedBlocks.Count < maxBlocks)
         {
             collectedBlocks.Add(collider.gameObject);
 
